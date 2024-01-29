@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-sclae=1.0">
+    <link rel="stylesheet" href="propuestas.css">
+  <link rel="icon" href="Imagenes/logosolo.png">
+  <link rel="stylesheet" href="Google Sheet.css">
+    <title>La Libertad Avanza Río Cuarto</title>
+</head>
+<body>
+	<nav class="navbar">
+		<a href="index.html"><img src="llariocuartosn1.png" class="logo"></a>
+		<div class="nav-links">
+			<ul>
+				<li class="active"> <a href="index.html">INICIO</a></li>
+				<li><a href="afiliaciones.html">AFILIACIONES</a></li>
+				<li><a href="propuestas.html">PROPUESTAS</a></li>
+				<li><a href="contacto.html">CONTACTO</a></li>
+			</ul>
+
+		</div>
+</nav>
+
+<div class="formulario">
+	  <div class="title">
+		  <h2 class="text-center mt-3">DEJANOS TU PROPUESTA PARA LA CIUDAD<hr></h2>
+	  </div>
+  
+	  <div class="col-md-5">
+		  <form id="my-google-sheet">
+			  <div class="entrada_datos">
+				<label for="Nombre">Nombre:</label>
+				  <input type="text" name="Nombre" rows="10" class="form-control" required>
+			  </div>
+			  <div class="entrada_datos">
+				<label for="Apellido">Apellido:</label>
+				<input type="text" name="Apellido" rows="10" class="form-control" required>
+			</div>
+			  <div class="entrada_datos">
+				<label for="Celular">Numero de Celular:</label>
+				  <input type="number" rows="10" name="Celular" class="form-control" required>
+			  </div>
+			  <div class="entrada_datos">
+				<label for="Propuesta">Propuesta:</label>
+				<textarea name="Propuesta" rows="10" placeholder="Escribe aqui tu Propuesta" class="form-control" required></textarea>
+			</div>
+		  </form>
+		  <div class="form-group_enviar">
+			<button onclick="SendFormGoogleSheets()" class="boton_enviar">Enviar Propuesta</button>
+		</div>
+	</div>
+  
+	</div>
+  
+  
+	  <script src="https://code.jquery.com/jquery-3.6.0.js"  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	  <script src="assets/js/material.min.js"></script>
+	  <script>
+		function SendFormGoogleSheets (){
+		  $.ajax({
+			url:'https://script.google.com/macros/s/AKfycbz1sKWEvYl4k7H9WE2MChQaQFheXUdv7SdH9ctiuRrmXH7bUIC-x74vQTEguSLVFtYA/exec',
+			type:'post',
+			data:$("#my-google-sheet").serializeArray(),
+			success: function(){
+			  alert("Registro exitoso")
+			},
+			error: function(){
+			  alert("Error en el Registro :(")
+			}
+		});
+	  }
+	  </script>
+<br>
+<br>
+<footer>
+	<div class="pie">
+		<small>&copy; 2024 <b>LA LIBERTAD AVANZA RÍO CUARTO</b> - Todos los Derechos Reservados.</small>
+</div>
+</footer>
+</body>
